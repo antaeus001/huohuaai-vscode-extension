@@ -1,7 +1,7 @@
 {
 	"name": "huohuaai",
 	"displayName": "HuoHuaAI (huohuaai.com)",
-	"description": "Autonomous coding agent right in your IDE, capable of creating/editing files, running commands, using the browser, and more with your permission every step of the way.",
+	"description": "您的AI编程助手，全中文交流，无需配置， 安装即用。",
 	"version": "4.0.1",
 	"icon": "assets/icons/icon.png",
 	"galleryBanner": {
