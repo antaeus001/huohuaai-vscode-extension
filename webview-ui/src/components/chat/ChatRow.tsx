@@ -161,7 +161,7 @@ export const ChatRowContent = ({ message, isExpanded, onToggleExpand, lastModifi
 							color: errorColor,
 							marginBottom: "-1.5px",
 						}}></span>,
-					<span style={{ color: errorColor, fontWeight: "bold" }}>Cline is having trouble...</span>,
+					<span style={{ color: errorColor, fontWeight: "bold" }}>HuoHuaAI is having trouble...</span>,
 				]
 			case "auto_approval_max_req_reached":
 				return [
@@ -186,7 +186,7 @@ export const ChatRowContent = ({ message, isExpanded, onToggleExpand, lastModifi
 							}}></span>
 					),
 					<span style={{ color: normalColor, fontWeight: "bold" }}>
-						{message.type === "ask" ? "Cline wants to execute this command:" : "Cline executed this command:"}
+						{message.type === "ask" ? "HuoHuaAI wants to execute this command:" : "HuoHuaAI executed this command:"}
 					</span>,
 				]
 			case "use_mcp_server":
@@ -205,12 +205,12 @@ export const ChatRowContent = ({ message, isExpanded, onToggleExpand, lastModifi
 					<span style={{ color: normalColor, fontWeight: "bold" }}>
 						{message.type === "ask" ? (
 							<>
-								Cline wants to {mcpServerUse.type === "use_mcp_tool" ? "use a tool" : "access a resource"} on the{" "}
+								HuoHuaAI wants to {mcpServerUse.type === "use_mcp_tool" ? "use a tool" : "access a resource"} on the{" "}
 								<code>{mcpServerUse.serverName}</code> MCP server:
 							</>
 						) : (
 							<>
-								Cline {mcpServerUse.type === "use_mcp_tool" ? "used a tool" : "accessed a resource"} on the{" "}
+								HuoHuaAI {mcpServerUse.type === "use_mcp_tool" ? "used a tool" : "accessed a resource"} on the{" "}
 								<code>{mcpServerUse.serverName}</code> MCP server:
 							</>
 						)}
@@ -293,7 +293,7 @@ export const ChatRowContent = ({ message, isExpanded, onToggleExpand, lastModifi
 							color: normalColor,
 							marginBottom: "-1.5px",
 						}}></span>,
-					<span style={{ color: normalColor, fontWeight: "bold" }}>Cline has a question:</span>,
+					<span style={{ color: normalColor, fontWeight: "bold" }}>HuoHuaAI has a question:</span>,
 				]
 			default:
 				return [null, null]
@@ -347,7 +347,7 @@ export const ChatRowContent = ({ message, isExpanded, onToggleExpand, lastModifi
 						<div style={headerStyle}>
 							{toolIcon("edit")}
 							<span style={{ fontWeight: "bold" }}>
-								{message.type === "ask" ? "Cline wants to edit this file:" : "Cline is editing this file:"}
+								{message.type === "ask" ? "HuoHuaAI wants to edit this file:" : "HuoHuaAI is editing this file:"}
 							</span>
 						</div>
 						<CodeAccordian
@@ -365,7 +365,7 @@ export const ChatRowContent = ({ message, isExpanded, onToggleExpand, lastModifi
 						<div style={headerStyle}>
 							{toolIcon("new-file")}
 							<span style={{ fontWeight: "bold" }}>
-								{message.type === "ask" ? "Cline wants to create a new file:" : "Cline is creating a new file:"}
+								{message.type === "ask" ? "HuoHuaAI wants to create a new file:" : "HuoHuaAI is creating a new file:"}
 							</span>
 						</div>
 						<CodeAccordian
@@ -383,7 +383,7 @@ export const ChatRowContent = ({ message, isExpanded, onToggleExpand, lastModifi
 						<div style={headerStyle}>
 							{toolIcon("file-code")}
 							<span style={{ fontWeight: "bold" }}>
-								{message.type === "ask" ? "Cline wants to read this file:" : "Cline read this file:"}
+								{message.type === "ask" ? "HuoHuaAI wants to read this file:" : "HuoHuaAI read this file:"}
 							</span>
 						</div>
 						{/* <CodeAccordian
@@ -447,8 +447,8 @@ export const ChatRowContent = ({ message, isExpanded, onToggleExpand, lastModifi
 							{toolIcon("folder-opened")}
 							<span style={{ fontWeight: "bold" }}>
 								{message.type === "ask"
-									? "Cline wants to view the top level files in this directory:"
-									: "Cline viewed the top level files in this directory:"}
+									? "HuoHuaAI wants to view the top level files in this directory:"
+									: "HuoHuaAI viewed the top level files in this directory:"}
 							</span>
 						</div>
 						<CodeAccordian
@@ -467,8 +467,8 @@ export const ChatRowContent = ({ message, isExpanded, onToggleExpand, lastModifi
 							{toolIcon("folder-opened")}
 							<span style={{ fontWeight: "bold" }}>
 								{message.type === "ask"
-									? "Cline wants to recursively view all files in this directory:"
-									: "Cline recursively viewed all files in this directory:"}
+									? "HuoHuaAI wants to recursively view all files in this directory:"
+									: "HuoHuaAI recursively viewed all files in this directory:"}
 							</span>
 						</div>
 						<CodeAccordian
@@ -487,8 +487,8 @@ export const ChatRowContent = ({ message, isExpanded, onToggleExpand, lastModifi
 							{toolIcon("file-code")}
 							<span style={{ fontWeight: "bold" }}>
 								{message.type === "ask"
-									? "Cline wants to view source code definition names used in this directory:"
-									: "Cline viewed source code definition names used in this directory:"}
+									? "HuoHuaAI wants to view source code definition names used in this directory:"
+									: "HuoHuaAI viewed source code definition names used in this directory:"}
 							</span>
 						</div>
 						<CodeAccordian
@@ -507,11 +507,11 @@ export const ChatRowContent = ({ message, isExpanded, onToggleExpand, lastModifi
 							<span style={{ fontWeight: "bold" }}>
 								{message.type === "ask" ? (
 									<>
-										Cline wants to search this directory for <code>{tool.regex}</code>:
+										HuoHuaAI wants to search this directory for <code>{tool.regex}</code>:
 									</>
 								) : (
 									<>
-										Cline searched this directory for <code>{tool.regex}</code>:
+										HuoHuaAI searched this directory for <code>{tool.regex}</code>:
 									</>
 								)}
 							</span>
@@ -534,9 +534,9 @@ export const ChatRowContent = ({ message, isExpanded, onToggleExpand, lastModifi
 			// 				{isInspecting ? <ProgressIndicator /> : toolIcon("inspect")}
 			// 				<span style={{ fontWeight: "bold" }}>
 			// 					{message.type === "ask" ? (
-			// 						<>Cline wants to inspect this website:</>
+			// 						<>HuoHuaAI wants to inspect this website:</>
 			// 					) : (
-			// 						<>Cline is inspecting this website:</>
+			// 						<>HuoHuaAI is inspecting this website:</>
 			// 					)}
 			// 				</span>
 			// 			</div>
@@ -769,7 +769,7 @@ export const ChatRowContent = ({ message, isExpanded, onToggleExpand, lastModifi
 												<br />
 												It seems like you're having Windows PowerShell issues, please see this{" "}
 												<a
-													href="https://github.com/cline/cline/wiki/TroubleShooting-%E2%80%90-%22PowerShell-is-not-recognized-as-an-internal-or-external-command%22"
+													href="https://github.com/antaeus001/huohuaai-vscode-extension/wiki/TroubleShooting-%E2%80%90-%22PowerShell-is-not-recognized-as-an-internal-or-external-command%22"
 													style={{
 														color: "inherit",
 														textDecoration: "underline",
@@ -1003,12 +1003,12 @@ export const ChatRowContent = ({ message, isExpanded, onToggleExpand, lastModifi
 									</span>
 								</div>
 								<div>
-									Cline won't be able to view the command's output. Please update VSCode (
+								HuoHuaAI won't be able to view the command's output. Please update VSCode (
 									<code>CMD/CTRL + Shift + P</code> → "Update") and make sure you're using a supported shell:
 									zsh, bash, fish, or PowerShell (<code>CMD/CTRL + Shift + P</code> → "Terminal: Select Default
 									Profile").{" "}
 									<a
-										href="https://github.com/cline/cline/wiki/Troubleshooting-%E2%80%90-Shell-Integration-Unavailable"
+										href="https://github.com/antaeus001/huohuaai-vscode-extension/wiki/Troubleshooting-%E2%80%90-Shell-Integration-Unavailable"
 										style={{
 											color: "inherit",
 											textDecoration: "underline",

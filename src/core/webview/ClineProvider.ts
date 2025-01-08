@@ -513,7 +513,7 @@ export class ClineProvider implements vscode.WebviewViewProvider {
 							await pWaitFor(() => this.cline?.isInitialized === true, {
 								timeout: 3_000,
 							}).catch(() => {
-								console.error("Failed to init new cline instance")
+								console.error("Failed to init new HuoHuaAI instance")
 							})
 							// NOTE: cancelTask awaits abortTask, which awaits diffViewProvider.revertChanges, which reverts any edited files, allowing us to reset to a checkpoint rather than running into a state where the revertChanges function is called alongside or after the checkpoint reset
 							await this.cline?.restoreCheckpoint(message.number, message.text! as ClineCheckpointRestore)
@@ -590,11 +590,11 @@ export class ClineProvider implements vscode.WebviewViewProvider {
 	// MCP
 
 	async ensureMcpServersDirectoryExists(): Promise<string> {
-		const mcpServersDir = path.join(os.homedir(), "Documents", "Cline", "MCP")
+		const mcpServersDir = path.join(os.homedir(), "Documents", "HuoHuaAI", "MCP")
 		try {
 			await fs.mkdir(mcpServersDir, { recursive: true })
 		} catch (error) {
-			return "~/Documents/Cline/MCP" // in case creating a directory in documents fails for whatever reason (e.g. permissions) - this is fine since this path is only ever used in the system prompt
+			return "~/Documents/HuoHuaAI/MCP" // in case creating a directory in documents fails for whatever reason (e.g. permissions) - this is fine since this path is only ever used in the system prompt
 		}
 		return mcpServersDir
 	}

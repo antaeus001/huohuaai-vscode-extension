@@ -24,7 +24,7 @@ export function activate(context: vscode.ExtensionContext) {
 	outputChannel = vscode.window.createOutputChannel("Cline")
 	context.subscriptions.push(outputChannel)
 
-	outputChannel.appendLine("Cline extension activated")
+	outputChannel.appendLine("HuoHuaAI extension activated")
 
 	const sidebarProvider = new ClineProvider(context, outputChannel)
 

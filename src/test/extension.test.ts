@@ -6,7 +6,7 @@ import * as vscode from "vscode"
 
 const packagePath = path.join(__dirname, "..", "..", "..", "package.json")
 
-describe("Cline Extension", () => {
+describe("HuoHuaAI Extension", () => {
 	after(() => {
 		vscode.window.showInformationMessage("All tests done!")
 	})
