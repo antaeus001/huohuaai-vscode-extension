@@ -1,8 +1,8 @@
 {
 	"name": "huohuaai",
 	"displayName": "HuoHuaAI (huohuaai.com)",
-	"description": "您的AI编程助手，全中文交流，无需配置， 安装即用。",
-	"version": "4.0.1",
+	"description": "您的AI编程助手，全中文回复，可以帮助您编写代码、调试程序、创建项目等",
+	"version": "4.0.3",
 	"icon": "assets/icons/icon.png",
 	"galleryBanner": {
 		"color": "#617A91",

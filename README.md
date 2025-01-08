@@ -1,85 +1,60 @@
 # HuoHuaAI (huohuaai.com)
 
-Meet HuoHuaAI, an AI assistant that can use your CLI and Editor.
+火花AI,一个可以使用你的命令行和编辑器的 AI 助手。
 
-HuoHuaAI can handle complex software development tasks step-by-step. With tools that let him create & edit files, explore large projects, use the browser, and execute terminal commands (after you grant permission), he can assist you in ways that go beyond code completion or tech support. HuoHuaAI can even use the Model Context Protocol (MCP) to create new tools and extend his own capabilities. While autonomous AI scripts traditionally run in sandboxed environments, this extension provides a human-in-the-loop GUI to approve every file change and terminal command, providing a safe and accessible way to explore the potential of agentic AI.
+火花 AI 能够逐步处理复杂的软件开发任务。可以创建和编辑文件、探索大型项目、使用浏览器以及执行终端命令(在你授权后),他能以超越代码补全或技术支持的方式为你提供帮助。火花 AI 甚至可以使用模型上下文协议(MCP)来创建新工具并扩展自身能力。虽然传统的自主 AI 脚本在沙盒环境中运行,但这个扩展提供了一个人机交互的图形界面,让你可以批准每个文件更改和终端命令,为探索主动式 AI 的潜力提供了一个安全和便捷的方式。
 
-1. Enter your task and add images to convert mockups into functional apps or fix bugs with screenshots.
-2. HuoHuaAI starts by analyzing your file structure & source code ASTs, running regex searches, and reading relevant files to get up to speed in existing projects. By carefully managing what information is added to context, HuoHuaAI can provide valuable assistance even for large, complex projects without overwhelming the context window.
-3. Once HuoHuaAI has the information he needs, he can:
-    - Create and edit files + monitor linter/compiler errors along the way, letting him proactively fix issues like missing imports and syntax errors on his own.
-    - Execute commands directly in your terminal and monitor their output as he works, letting him e.g., react to dev server issues after editing a file.
-    - For web development tasks, HuoHuaAI can launch the site in a headless browser, click, type, scroll, and capture screenshots + console logs, allowing him to fix runtime errors and visual bugs.
-4. When a task is completed, HuoHuaAI will present the result to you with a terminal command like `open -a "Google Chrome" index.html`, which you run with a click of a button.
+1. 输入你的任务并添加图片,将设计模型转换为功能性应用或通过截图修复 bug。
+2. 火花 AI 首先通过分析你的文件结构和源代码 AST、运行正则表达式搜索以及阅读相关文件来快速了解现有项目。通过仔细管理添加到上下文的信息,火花 AI 可以在不超出上下文窗口的情况下,为大型复杂项目提供有价值的帮助。
+3. 一旦火花 AI 获得所需信息,他可以:
+    - 创建和编辑文件并监控 linter/编译器错误,让他能够主动修复诸如缺少导入和语法错误等问题。
+    - 直接在你的终端中执行命令并监控其输出,让他能够在编辑文件后对开发服务器问题作出反应。
+    - 对于 Web 开发任务,火花 AI 可以在无头浏览器中启动网站,点击、输入、滚动并捕获截图和控制台日志,使他能够修复运行时错误和视觉 bug。
+4. 当任务完成时,火花 AI 会通过终端命令向你展示结果,如 `open -a "Google Chrome" index.html`,你只需点击一下按钮即可运行。
 
-> [!TIP]
-> Use the `CMD/CTRL + Shift + P` shortcut to open the command palette and type "HuoHuaAI: Open In New Tab" to open the extension as a tab in your editor. This lets you use HuoHuaAI side-by-side with your file explorer, and see how he changes your workspace more clearly.
+> [!提示]
+> 使用 `CMD/CTRL + Shift + P` 快捷键打开命令面板,输入 "HuoHuaAI: Open In New Tab" 在编辑器中以标签页形式打开扩展。这让你可以在文件浏览器旁边使用火花 AI,更清晰地看到他如何改变你的工作区。
 
 ---
 
-### Use any API and Model
+### 使用任意 API 和模型
 
-Cline supports API providers like OpenRouter, Anthropic, OpenAI, Google Gemini, AWS Bedrock, Azure, and GCP Vertex. You can also configure any OpenAI compatible API, or use a local model through LM Studio/Ollama. If you're using OpenRouter, the extension fetches their latest model list, allowing you to use the newest models as soon as they're available.
+火花 AI 支持 OpenRouter、Anthropic、OpenAI、Google Gemini、AWS Bedrock、Azure 和 GCP Vertex 等 API 提供商。你还可以配置任何兼容 OpenAI 的 API,或通过 LM Studio/Ollama 使用本地模型。如果你使用 OpenRouter,扩展会获取他们最新的模型列表,让你可以在新模型一推出就立即使用。
 
-The extension also keeps track of total tokens and API usage cost for the entire task loop and individual requests, keeping you informed of spend every step of the way.
+扩展还会跟踪整个任务循环和单个请求的总令牌数和 API 使用成本,让你随时了解支出情况。
 
-<!-- Transparent pixel to create line break after floating image -->
+### 在终端中运行命令
 
-<img width="2000" height="0" src="https://github.com/user-attachments/assets/ee14e6f7-20b8-4391-9091-8e8e25561929"><br>
+得益于 [VSCode v1.93 中的 shell 集成更新](https://code.visualstudio.com/updates/v1_93#_terminal-shell-integration-api),火花 AI 可以直接在你的终端中执行命令并接收输出。这使他能够执行广泛的任务,从安装包和运行构建脚本到部署应用程序、管理数据库和执行测试,同时适应你的开发环境和工具链以正确完成工作。
 
-<img align="left" width="370" src="https://github.com/user-attachments/assets/81be79a8-1fdb-4028-9129-5fe055e01e76">
+对于开发服务器等长时间运行的进程,使用"继续运行"按钮让火花 AI 在命令在后台运行时继续任务。当火花 AI 工作时,他会收到任何新的终端输出通知,让他能够对可能出现的问题作出反应,比如编辑文件时的编译时错误。
 
-### Run Commands in Terminal
+### 创建和编辑文件
 
-Thanks to the new [shell integration updates in VSCode v1.93](https://code.visualstudio.com/updates/v1_93#_terminal-shell-integration-api), Cline can execute commands directly in your terminal and receive the output. This allows him to perform a wide range of tasks, from installing packages and running build scripts to deploying applications, managing databases, and executing tests, all while adapting to your dev environment & toolchain to get the job done right.
+火花 AI 可以直接在你的编辑器中创建和编辑文件,向你展示更改的差异视图。你可以直接在差异视图编辑器中编辑或还原火花 AI 的更改,或在聊天中提供反馈,直到你对结果满意为止。火花 AI 还会监控 linter/编译器错误(缺少导入、语法错误等),以便他能够自行修复途中出现的问题。
 
-For long running processes like dev servers, use the "Proceed While Running" button to let Cline continue in the task while the command runs in the background. As Cline works he’ll be notified of any new terminal output along the way, letting him react to issues that may come up, such as compile-time errors when editing files.
+火花 AI 所做的所有更改都记录在你文件的时间线中,提供了一种轻松跟踪和还原修改的方式。
 
-<!-- Transparent pixel to create line break after floating image -->
+### 使用浏览器
 
-<img width="2000" height="0" src="https://github.com/user-attachments/assets/ee14e6f7-20b8-4391-9091-8e8e25561929"><br>
+通过 Claude 3.5 Sonnet 的新 [Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use) 功能,火花 AI 可以启动浏览器、点击元素、输入文本和滚动,在每个步骤捕获截图和控制台日志。这允许交互式调试、端到端测试,甚至一般的网页使用！这让他能够自主修复视觉 bug 和运行时问题,而无需你手动复制粘贴错误日志。
 
-<img align="right" width="400" src="https://github.com/user-attachments/assets/c5977833-d9b8-491e-90f9-05f9cd38c588">
+试着让火花 AI "测试应用程序",看着他运行 `npm run dev` 这样的命令,在浏览器中启动本地运行的开发服务器,并执行一系列测试以确认一切正常。[在这里查看演示。](https://x.com/sdrzn/status/1850880547825823989)
 
-### Create and Edit Files
+### "添加一个工具..."
 
-Cline can create and edit files directly in your editor, presenting you a diff view of the changes. You can edit or revert Cline's changes directly in the diff view editor, or provide feedback in chat until you're satisfied with the result. Cline also monitors linter/compiler errors (missing imports, syntax errors, etc.) so he can fix issues that come up along the way on his own.
+感谢 [模型上下文协议](https://github.com/modelcontextprotocol),火花 AI 可以通过自定义工具扩展他的能力。虽然你可以使用[社区制作的服务器](https://github.com/modelcontextprotocol/servers),但火花 AI 可以创建和安装专门适合你特定工作流程的工具。只需要让火花 AI "添加一个工具",他就会处理所有事情,从创建新的 MCP 服务器到将其安装到扩展中。这些自定义工具然后成为火花 AI 工具包的一部分,随时可用于未来的任务。
 
-All changes made by Cline are recorded in your file's Timeline, providing an easy way to track and revert modifications if needed.
+- "添加一个获取 Jira 工单的工具": 检索工单验收标准并让火花 AI 开始工作
+- "添加一个管理 AWS EC2 的工具": 检查服务器指标并扩展实例
+- "添加一个拉取最新 PagerDuty 事件的工具": 获取详情并让火花 AI 修复 bug
 
-<!-- Transparent pixel to create line break after floating image -->
+### 添加上下文
 
-<img width="2000" height="0" src="https://github.com/user-attachments/assets/ee14e6f7-20b8-4391-9091-8e8e25561929"><br>
+**`@url`:** 粘贴 URL 让扩展获取并转换为 markdown,当你想给火花 AI 最新文档时很有用
 
-<img align="left" width="370" src="https://github.com/user-attachments/assets/bc2e85ba-dfeb-4fe6-9942-7cfc4703cbe5">
+**`@problems`:** 添加工作区错误和警告('Problems' 面板)供火花 AI 修复
 
-### Use the Browser
+**`@file`:** 添加文件内容,这样你就不用浪费 API 请求来批准读取文件(+ 输入以搜索文件)
 
-With Claude 3.5 Sonnet's new [Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use) capability, Cline can launch a browser, click elements, type text, and scroll, capturing screenshots and console logs at each step. This allows for interactive debugging, end-to-end testing, and even general web use! This gives him autonomy to fixing visual bugs and runtime issues without you needing to handhold and copy-pasting error logs yourself.
-
-Try asking Cline to "test the app", and watch as he runs a command like `npm run dev`, launches your locally running dev server in a browser, and performs a series of tests to confirm that everything works. [See a demo here.](https://x.com/sdrzn/status/1850880547825823989)
-
-<!-- Transparent pixel to create line break after floating image -->
-
-<img width="2000" height="0" src="https://github.com/user-attachments/assets/ee14e6f7-20b8-4391-9091-8e8e25561929"><br>
-
-<img align="right" width="350" src="https://github.com/user-attachments/assets/ac0efa14-5c1f-4c26-a42d-9d7c56f5fadd">
-
-### "add a tool that..."
-
-Thanks to the [Model Context Protocol](https://github.com/modelcontextprotocol), HuoHuaAI can extend his capabilities through custom tools. While you can use [community-made servers](https://github.com/modelcontextprotocol/servers), HuoHuaAI can instead create and install tools tailored to your specific workflow. Just ask HuoHuaAI to "add a tool" and he will handle everything, from creating a new MCP server to installing it into the extension. These custom tools then become part of HuoHuaAI's toolkit, ready to use in future tasks.
-
--   "add a tool that fetches Jira tickets": Retrieve ticket ACs and put HuoHuaAI to work
--   "add a tool that manages AWS EC2s": Check server metrics and scale instances up or down
--   "add a tool that pulls the latest PagerDuty incidents": Fetch details and ask HuoHuaAI to fix bugs
-
-### Add Context
-
-**`@url`:** Paste in a URL for the extension to fetch and convert to markdown, useful when you want to give HuoHuaAI the latest docs
-
-**`@problems`:** Add workspace errors and warnings ('Problems' panel) for HuoHuaAI to fix
-
-**`@file`:** Adds a file's contents so you don't have to waste API requests approving read file (+ type to search files)
-
-**`@folder`:** Adds folder's files all at once to speed up your workflow even more
-
+**`@folder`:** 一次性添加文件夹的所有文件,让你的工作流程更快速
