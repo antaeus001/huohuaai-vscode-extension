@@ -1,46 +1,21 @@
-# Cline (prev. Claude Dev) – \#1 on OpenRouter
+# HuoHuaAI (huohuaai.com)
 
-<p align="center">
-  <img src="https://media.githubusercontent.com/media/cline/cline/main/assets/docs/demo.gif" width="100%" />
-</p>
+Meet HuoHuaAI, an AI assistant that can use your CLI and Editor.
 
-<div align="center">
-<table>
-<tbody>
-<td align="center">
-<a href="https://marketplace.visualstudio.com/items?itemName=saoudrizwan.claude-dev" target="_blank"><strong>Download on VS Marketplace</strong></a>
-</td>
-<td align="center">
-<a href="https://discord.gg/cline" target="_blank"><strong>Join the Discord</strong></a>
-</td>
-<td align="center">
-<a href="https://github.com/cline/cline/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><strong>Feature Requests</strong></a>
-</td>
-<td align="center">
-<a href="https://cline.bot/join-us" target="_blank"><strong>We're Hiring!</strong></a>
-</td>
-</tbody>
-</table>
-</div>
-
-Meet Cline, an AI assistant that can use your **CLI** a**N**d **E**ditor.
-
-Thanks to [Claude 3.5 Sonnet's agentic coding capabilities](https://www-cdn.anthropic.com/fed9cc193a14b84131812372d8d5857f8f304c52/Model_Card_Claude_3_Addendum.pdf), Cline can handle complex software development tasks step-by-step. With tools that let him create & edit files, explore large projects, use the browser, and execute terminal commands (after you grant permission), he can assist you in ways that go beyond code completion or tech support. Cline can even use the Model Context Protocol (MCP) to create new tools and extend his own capabilities. While autonomous AI scripts traditionally run in sandboxed environments, this extension provides a human-in-the-loop GUI to approve every file change and terminal command, providing a safe and accessible way to explore the potential of agentic AI.
+HuoHuaAI can handle complex software development tasks step-by-step. With tools that let him create & edit files, explore large projects, use the browser, and execute terminal commands (after you grant permission), he can assist you in ways that go beyond code completion or tech support. HuoHuaAI can even use the Model Context Protocol (MCP) to create new tools and extend his own capabilities. While autonomous AI scripts traditionally run in sandboxed environments, this extension provides a human-in-the-loop GUI to approve every file change and terminal command, providing a safe and accessible way to explore the potential of agentic AI.
 
 1. Enter your task and add images to convert mockups into functional apps or fix bugs with screenshots.
-2. Cline starts by analyzing your file structure & source code ASTs, running regex searches, and reading relevant files to get up to speed in existing projects. By carefully managing what information is added to context, Cline can provide valuable assistance even for large, complex projects without overwhelming the context window.
-3. Once Cline has the information he needs, he can:
+2. HuoHuaAI starts by analyzing your file structure & source code ASTs, running regex searches, and reading relevant files to get up to speed in existing projects. By carefully managing what information is added to context, HuoHuaAI can provide valuable assistance even for large, complex projects without overwhelming the context window.
+3. Once HuoHuaAI has the information he needs, he can:
     - Create and edit files + monitor linter/compiler errors along the way, letting him proactively fix issues like missing imports and syntax errors on his own.
     - Execute commands directly in your terminal and monitor their output as he works, letting him e.g., react to dev server issues after editing a file.
-    - For web development tasks, Cline can launch the site in a headless browser, click, type, scroll, and capture screenshots + console logs, allowing him to fix runtime errors and visual bugs.
-4. When a task is completed, Cline will present the result to you with a terminal command like `open -a "Google Chrome" index.html`, which you run with a click of a button.
+    - For web development tasks, HuoHuaAI can launch the site in a headless browser, click, type, scroll, and capture screenshots + console logs, allowing him to fix runtime errors and visual bugs.
+4. When a task is completed, HuoHuaAI will present the result to you with a terminal command like `open -a "Google Chrome" index.html`, which you run with a click of a button.
 
 > [!TIP]
-> Use the `CMD/CTRL + Shift + P` shortcut to open the command palette and type "Cline: Open In New Tab" to open the extension as a tab in your editor. This lets you use Cline side-by-side with your file explorer, and see how he changes your workspace more clearly.
+> Use the `CMD/CTRL + Shift + P` shortcut to open the command palette and type "HuoHuaAI: Open In New Tab" to open the extension as a tab in your editor. This lets you use HuoHuaAI side-by-side with your file explorer, and see how he changes your workspace more clearly.
 
 ---
-
-<img align="right" width="340" src="https://github.com/user-attachments/assets/3cf21e04-7ce9-4d22-a7b9-ba2c595e88a4">
 
 ### Use any API and Model
 
@@ -92,67 +67,19 @@ Try asking Cline to "test the app", and watch as he runs a command like `npm run
 
 ### "add a tool that..."
 
-Thanks to the [Model Context Protocol](https://github.com/modelcontextprotocol), Cline can extend his capabilities through custom tools. While you can use [community-made servers](https://github.com/modelcontextprotocol/servers), Cline can instead create and install tools tailored to your specific workflow. Just ask Cline to "add a tool" and he will handle everything, from creating a new MCP server to installing it into the extension. These custom tools then become part of Cline's toolkit, ready to use in future tasks.
+Thanks to the [Model Context Protocol](https://github.com/modelcontextprotocol), HuoHuaAI can extend his capabilities through custom tools. While you can use [community-made servers](https://github.com/modelcontextprotocol/servers), HuoHuaAI can instead create and install tools tailored to your specific workflow. Just ask HuoHuaAI to "add a tool" and he will handle everything, from creating a new MCP server to installing it into the extension. These custom tools then become part of HuoHuaAI's toolkit, ready to use in future tasks.
 
--   "add a tool that fetches Jira tickets": Retrieve ticket ACs and put Cline to work
+-   "add a tool that fetches Jira tickets": Retrieve ticket ACs and put HuoHuaAI to work
 -   "add a tool that manages AWS EC2s": Check server metrics and scale instances up or down
--   "add a tool that pulls the latest PagerDuty incidents": Fetch details and ask Cline to fix bugs
-
-<!-- Transparent pixel to create line break after floating image -->
-
-<img width="2000" height="0" src="https://github.com/user-attachments/assets/ee14e6f7-20b8-4391-9091-8e8e25561929"><br>
-
-<img align="left" width="360" src="https://github.com/user-attachments/assets/7fdf41e6-281a-4b4b-ac19-020b838b6970">
+-   "add a tool that pulls the latest PagerDuty incidents": Fetch details and ask HuoHuaAI to fix bugs
 
 ### Add Context
 
-**`@url`:** Paste in a URL for the extension to fetch and convert to markdown, useful when you want to give Cline the latest docs
+**`@url`:** Paste in a URL for the extension to fetch and convert to markdown, useful when you want to give HuoHuaAI the latest docs
 
-**`@problems`:** Add workspace errors and warnings ('Problems' panel) for Cline to fix
+**`@problems`:** Add workspace errors and warnings ('Problems' panel) for HuoHuaAI to fix
 
 **`@file`:** Adds a file's contents so you don't have to waste API requests approving read file (+ type to search files)
 
 **`@folder`:** Adds folder's files all at once to speed up your workflow even more
 
-<!-- Transparent pixel to create line break after floating image -->
-
-<img width="2000" height="0" src="https://github.com/user-attachments/assets/ee14e6f7-20b8-4391-9091-8e8e25561929"><br>
-
-<img align="right" width="350" src="https://github.com/user-attachments/assets/140c8606-d3bf-41b9-9a1f-4dbf0d4c90cb">
-
-### Checkpoints: Compare and Restore
-
-As Cline works through a task, the extension takes a snapshot of your workspace at each step. You can use the 'Compare' button to see a diff between the snapshot and your current workspace, and the 'Restore' button to roll back to that point.
-
-For example, when working with a local web server, you can use 'Restore Workspace Only' to quickly test different versions of your app, then use 'Restore Task and Workspace' when you find the version you want to continue building from. This lets you safely explore different approaches without losing progress.
-
-<!-- Transparent pixel to create line break after floating image -->
-
-<img width="2000" height="0" src="https://github.com/user-attachments/assets/ee14e6f7-20b8-4391-9091-8e8e25561929"><br>
-
-## Contributing
-
-To contribute to the project, start with our [Contributing Guide](CONTRIBUTING.md) to learn the basics. You can also join our [Discord](https://discord.gg/cline) to chat with other contributors in the `#contributors` channel. If you're looking for full-time work, check out our open positions on our [careers page](https://cline.bot/join-us)!
-
-<details>
-<summary>Local Development Instructions</summary>
-
-1. Clone the repository _(Requires [git-lfs](https://git-lfs.com/))_:
-    ```bash
-    git clone https://github.com/cline/cline.git
-    ```
-2. Open the project in VSCode:
-    ```bash
-    code cline
-    ```
-3. Install the necessary dependencies for the extension and webview-gui:
-    ```bash
-    npm run install:all
-    ```
-4. Launch by pressing `F5` (or `Run`->`Start Debugging`) to open a new VSCode window with the extension loaded. (You may need to install the [esbuild problem matchers extension](https://marketplace.visualstudio.com/items?itemName=connor4312.esbuild-problem-matchers) if you run into issues building the project.)
-
-</details>
-
-## License
-
-[Apache 2.0 © 2024 Cline Bot Inc.](./LICENSE)

@@ -1,8 +1,8 @@
 {
-	"name": "claude-dev",
-	"displayName": "Cline (prev. Claude Dev)",
+	"name": "huohuaai",
+	"displayName": "HuoHuaAI (huohuaai.com)",
 	"description": "Autonomous coding agent right in your IDE, capable of creating/editing files, running commands, using the browser, and more with your permission every step of the way.",
-	"version": "3.1.2",
+	"version": "4.0.0",
 	"icon": "assets/icons/icon.png",
 	"galleryBanner": {
 		"color": "#617A91",
@@ -12,15 +12,15 @@
 		"vscode": "^1.84.0"
 	},
 	"author": {
-		"name": "Cline Bot Inc."
+		"name": "huohuaai.com"
 	},
 	"license": "Apache-2.0",
-	"publisher": "saoudrizwan",
+	"publisher": "huohuaai",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/cline/cline"
+		"url": "https://github.com/antaeus001/huohuaai-vscode-extension"
 	},
-	"homepage": "https://cline.bot",
+	"homepage": "https://huohuaai.com",
 	"categories": [
 		"AI",
 		"Chat",
@@ -49,49 +49,49 @@
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "claude-dev-ActivityBar",
-					"title": "Cline",
-					"icon": "$(robot)"
+					"id": "huohuaai-dev-ActivityBar",
+					"title": "HuoHuaAI",
+					"icon": "$(star)"
 				}
 			]
 		},
 		"views": {
-			"claude-dev-ActivityBar": [
+			"huohuaai-dev-ActivityBar": [
 				{
 					"type": "webview",
-					"id": "claude-dev.SidebarProvider",
+					"id": "huohuaai-dev.SidebarProvider",
 					"name": ""
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "cline.plusButtonClicked",
+				"command": "huohuaai.plusButtonClicked",
 				"title": "New Task",
 				"icon": "$(add)"
 			},
 			{
-				"command": "cline.mcpButtonClicked",
+				"command": "huohuaai.mcpButtonClicked",
 				"title": "MCP Servers",
 				"icon": "$(server)"
 			},
 			{
-				"command": "cline.historyButtonClicked",
+				"command": "huohuaai.historyButtonClicked",
 				"title": "History",
 				"icon": "$(history)"
 			},
 			{
-				"command": "cline.popoutButtonClicked",
+				"command": "huohuaai.popoutButtonClicked",
 				"title": "Open in Editor",
 				"icon": "$(link-external)"
 			},
 			{
-				"command": "cline.settingsButtonClicked",
+				"command": "huohuaai.settingsButtonClicked",
 				"title": "Settings",
 				"icon": "$(settings-gear)"
 			},
 			{
-				"command": "cline.openInNewTab",
+				"command": "huohuaai.openInNewTab",
 				"title": "Open In New Tab",
 				"category": "Cline"
 			}
@@ -99,29 +99,29 @@
 		"menus": {
 			"view/title": [
 				{
-					"command": "cline.plusButtonClicked",
+					"command": "huohuaai.plusButtonClicked",
 					"group": "navigation@1",
-					"when": "view == claude-dev.SidebarProvider"
+					"when": "view == huohuaai-dev.SidebarProvider"
 				},
 				{
-					"command": "cline.mcpButtonClicked",
+					"command": "huohuaai.mcpButtonClicked",
 					"group": "navigation@2",
-					"when": "view == claude-dev.SidebarProvider"
+					"when": "view == huohuaai-dev.SidebarProvider"
 				},
 				{
-					"command": "cline.historyButtonClicked",
+					"command": "huohuaai.historyButtonClicked",
 					"group": "navigation@3",
-					"when": "view == claude-dev.SidebarProvider"
+					"when": "view == huohuaai-dev.SidebarProvider"
 				},
 				{
-					"command": "cline.popoutButtonClicked",
+					"command": "huohuaai.popoutButtonClicked",
 					"group": "navigation@4",
-					"when": "view == claude-dev.SidebarProvider"
+					"when": "view == huohuaai-dev.SidebarProvider"
 				},
 				{
-					"command": "cline.settingsButtonClicked",
+					"command": "huohuaai.settingsButtonClicked",
 					"group": "navigation@5",
-					"when": "view == claude-dev.SidebarProvider"
+					"when": "view == huohuaai-dev.SidebarProvider"
 				}
 			]
 		}
