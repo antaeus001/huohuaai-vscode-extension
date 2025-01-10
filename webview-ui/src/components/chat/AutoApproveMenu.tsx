@@ -17,34 +17,34 @@ const ACTION_METADATA: {
 }[] = [
 	{
 		id: "readFiles",
-		label: "Read files and directories",
+		label: "读取文件和目录",
 		shortName: "Read",
-		description: "Allows access to read any file on your computer.",
+		description: "读取您计算机上的任何文件",
 	},
 	{
 		id: "editFiles",
-		label: "Edit files",
+		label: "修改文件",
 		shortName: "Edit",
-		description: "Allows modification of any files on your computer.",
+		description: "修改您计算机上的任何文件",
 	},
 	{
 		id: "executeCommands",
-		label: "Execute safe commands",
+		label: "执行安全的终端命令",
 		shortName: "Commands",
 		description:
-			"Allows execution of safe terminal commands. If the model determines a command is potentially destructive, it will still require approval.",
+			"执行安全的终端命令。如果模型确定某个命令可能具有破坏性，仍然需要用户批准。",
 	},
 	{
 		id: "useBrowser",
-		label: "Use the browser",
+		label: "使用浏览器",
 		shortName: "Browser",
-		description: "Allows ability to launch and interact with any website in a headless browser.",
+		description: "允许在headless浏览器中启动并与任何网站进行交互.",
 	},
 	{
 		id: "useMcp",
-		label: "Use MCP servers",
+		label: "使用 MCP 服务器",
 		shortName: "MCP",
-		description: "Allows use of configured MCP servers which may modify filesystem or interact with APIs.",
+		description: "允许使用已配置的MCP服务器，这些服务器可能会修改文件系统或与API交互。",
 	},
 ]
 
@@ -189,7 +189,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 							color: "var(--vscode-foreground)",
 							whiteSpace: "nowrap",
 						}}>
-						Auto-approve:
+						自动批准:
 					</span>
 					<span
 						style={{
@@ -216,8 +216,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 							color: "var(--vscode-descriptionForeground)",
 							fontSize: "12px",
 						}}>
-						Auto-approve allows HuoHuaAI to perform the following actions without asking for permission. Please use with
-						caution and only enable if you understand the risks.
+						自动批准允许 火花AI 在不请求权限的情况下执行以下操作。请谨慎使用，仅在您了解风险的情况下启用。
 					</div>
 					{ACTION_METADATA.map((action) => (
 						<div key={action.id} style={{ margin: "6px 0" }}>
@@ -284,7 +283,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 							fontSize: "12px",
 							marginBottom: "10px",
 						}}>
-						HuoHuaAI will automatically make this many API requests before asking for approval to proceed with the task.
+						火花AI 将自动进行多次 API 请求，然后请求您批准以继续执行任务。
 					</div>
 					<div style={{ margin: "6px 0" }}>
 						<VSCodeCheckbox
@@ -293,7 +292,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 								const checked = (e.target as HTMLInputElement).checked
 								updateNotifications(checked)
 							}}>
-							Enable Notifications
+							启用通知
 						</VSCodeCheckbox>
 						<div
 							style={{
@@ -301,7 +300,7 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 								color: "var(--vscode-descriptionForeground)",
 								fontSize: "12px",
 							}}>
-							Receive system notifications when HuoHuaAI requires approval to proceed or when a task is completed.
+							当 火花AI 需要批准以继续执行任务或任务完成时，接收系统通知。
 						</div>
 					</div>
 				</div>

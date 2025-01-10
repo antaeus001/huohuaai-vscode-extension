@@ -91,7 +91,7 @@ const McpView = ({ onDone }: McpViewProps) => {
 					alignItems: "center",
 					padding: "10px 17px 10px 20px",
 				}}>
-				<h3 style={{ color: "var(--vscode-foreground)", margin: 0 }}>MCP Servers</h3>
+				<h3 style={{ color: "var(--vscode-foreground)", margin: 0 }}>MCP 服务器</h3>
 				<VSCodeButton onClick={onDone}>Done</VSCodeButton>
 			</div>
 
@@ -107,14 +107,14 @@ const McpView = ({ onDone }: McpViewProps) => {
 					<VSCodeLink href="https://github.com/modelcontextprotocol" style={{ display: "inline" }}>
 						Model Context Protocol
 					</VSCodeLink>{" "}
-					enables communication with locally running MCP servers that provide additional tools and resources to extend
-					HuoHuaAI's capabilities. You can use{" "}
+					实现了与本地运行的MCP服务器的通信，这些服务器提供了额外的工具和资源来扩展HuoHuaAI的能力。
+					你可以使用{" "}
 					<VSCodeLink href="https://github.com/modelcontextprotocol/servers" style={{ display: "inline" }}>
 						community-made servers
 					</VSCodeLink>{" "}
-					or ask HuoHuaAI to create new tools specific to your workflow (e.g., "add a tool that gets the latest npm docs").{" "}
+					或让HuoHuaAI创建适合你工作流程的新工具 (例如, "添加一个工具来获取最新的npm文档").{" "}
 					<VSCodeLink href="https://x.com/sdrzn/status/1867271665086074969" style={{ display: "inline" }}>
-						See a demo here.
+					点击这里查看演示
 					</VSCodeLink>
 				</div>
 
@@ -141,7 +141,7 @@ const McpView = ({ onDone }: McpViewProps) => {
 							vscode.postMessage({ type: "openMcpSettings" })
 						}}>
 						<span className="codicon codicon-edit" style={{ marginRight: "6px" }}></span>
-						Edit MCP Settings
+						修改 MCP 设置
 					</VSCodeButton>
 				</div>
 
