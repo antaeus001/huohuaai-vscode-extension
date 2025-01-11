@@ -4,6 +4,7 @@ import delay from "delay"
 import * as vscode from "vscode"
 import { ClineProvider } from "./core/webview/ClineProvider"
 import { createClineAPI } from "./exports"
+import { AICompletionProvider } from "./services/completion/AICompletionProvider"
 import "./utils/path" // necessary to have access to String.prototype.toPosix
 import { DIFF_VIEW_URI_SCHEME } from "./integrations/editor/DiffViewProvider"
 
@@ -20,8 +21,8 @@ let outputChannel: vscode.OutputChannel
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
-	outputChannel = vscode.window.createOutputChannel("Cline")
+export async function activate(context: vscode.ExtensionContext) {
+	outputChannel = vscode.window.createOutputChannel("HuoHuaAI")
 	context.subscriptions.push(outputChannel)
 
 	outputChannel.appendLine("HuoHuaAI extension activated")
@@ -123,7 +124,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	})()
 	context.subscriptions.push(vscode.workspace.registerTextDocumentContentProvider(DIFF_VIEW_URI_SCHEME, diffContentProvider))
-
+	
 	// URI Handler
 	const handleUri = async (uri: vscode.Uri) => {
 		const path = uri.path
@@ -145,6 +146,23 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	}
 	context.subscriptions.push(vscode.window.registerUriHandler({ handleUri }))
+
+	// Register AI completion provider
+	outputChannel.appendLine("开始注册 AI 补全提供者");
+	const completionProvider = new AICompletionProvider();
+
+	// 确保内联建议功能已启用
+	await vscode.workspace.getConfiguration().update('editor.inlineSuggest.enabled', true, true);
+	
+	// 注册补全提供者
+	context.subscriptions.push(
+		vscode.languages.registerInlineCompletionItemProvider(
+			{ pattern: '**' },
+			completionProvider
+		)
+	);
+
+	outputChannel.appendLine("AI 补全提供者注册完成");
 
 	return createClineAPI(outputChannel, sidebarProvider)
 }
