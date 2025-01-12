@@ -157,7 +157,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	// 注册补全提供者
 	context.subscriptions.push(
 		vscode.languages.registerInlineCompletionItemProvider(
-			{ pattern: '**' },
+			[{ pattern: '**' }],
 			completionProvider
 		)
 	);

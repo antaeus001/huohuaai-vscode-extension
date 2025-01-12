@@ -153,7 +153,7 @@ function hypothenuse(a, b) {
 
         // 提取<COMPLETION>标签中的内容
         const completionMatch = responseText.match(/<COMPLETION>([\s\S]*?)<\/COMPLETION>/);
-        const extractedText = completionMatch ? completionMatch[1].trim() : '';
+        const extractedText = completionMatch ? completionMatch[1] : '';
 
         return [{
             text: extractedText,

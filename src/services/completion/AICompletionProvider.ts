@@ -1,21 +1,40 @@
 import * as vscode from 'vscode';
 import { getCompletion } from '../../api';
+import { ProviderResult } from 'vscode';
 
 export class AICompletionProvider implements vscode.InlineCompletionItemProvider {
     private outputChannel: vscode.OutputChannel;
     private lastTriggerTime: number = 0;
     private readonly TRIGGER_DELAY = 1000;
+    private lastInput: { line: number; character: number; text: string } | null = null;
+    private lastCompletionText: string | null = null;
+    private lastCompetionList: vscode.InlineCompletionList | undefined;
 
     constructor() {
         this.outputChannel = vscode.window.createOutputChannel("AI Completion");
     }
 
-    async provideInlineCompletionItems(
+    public async provideInlineCompletionItems(
         document: vscode.TextDocument,
         position: vscode.Position,
         context: vscode.InlineCompletionContext,
         token: vscode.CancellationToken
-    ): Promise<vscode.InlineCompletionItem[] | vscode.InlineCompletionList> {
+    ): Promise<vscode.InlineCompletionItem[] | vscode.InlineCompletionList | undefined> {
+        if (token.isCancellationRequested) {
+            return undefined;
+        }
+        const editor = vscode.window.activeTextEditor;
+        if (editor && editor.selections.length > 1) {
+          return undefined;
+        }
+        if (
+            context.selectedCompletionInfo &&
+            !context.selectedCompletionInfo.text.startsWith(
+              document.getText(context.selectedCompletionInfo.range),
+            )
+          ) {
+            return undefined;
+        }
         this.outputChannel.appendLine(`\n内联补全被触发 - 位置: ${position.line}:${position.character}`);
         
         const currentLine = document.lineAt(position.line).text;
@@ -24,8 +43,32 @@ export class AICompletionProvider implements vscode.InlineCompletionItemProvider
         
         this.outputChannel.appendLine(`当前行文本: ${linePrefix}|${lineSuffix}`);
 
+        // 检查是否与上次输入相同（移到最前面）
+        const currentInput = {
+            line: position.line,
+            character: position.character,
+            text: linePrefix
+        };
+
+        if (this.lastInput && 
+            this.lastInput.line === currentInput.line &&
+            this.lastInput.character === currentInput.character &&
+            this.lastInput.text === currentInput.text) {
+            this.outputChannel.appendLine('与上次输入相同，不触发补全');
+            //在这里停顿10秒
+            //await new Promise(resolve => setTimeout(resolve, 10000));
+            return this.lastCompetionList;
+        }
+
+        this.lastInput = currentInput;
+
+        if (this.lastCompletionText && document.lineAt(position.line).text.trim() === this.lastCompletionText.trim()) {
+            this.outputChannel.appendLine('当前行与上次补全内容相同，不触发补全');
+            return this.lastCompetionList;
+        }
+
         if (!this.shouldTriggerCompletion(document, position, linePrefix)) {
-            return [];
+            return undefined;
         }
 
         try {
@@ -43,7 +86,7 @@ export class AICompletionProvider implements vscode.InlineCompletionItemProvider
 
             if (!completions || completions.length === 0) {
                 this.outputChannel.appendLine('未获得补全建议');
-                return [];
+                return undefined;
             }
 
             this.outputChannel.appendLine(`获得 ${completions.length} 个补全建议`);
@@ -51,6 +94,7 @@ export class AICompletionProvider implements vscode.InlineCompletionItemProvider
 
             const items = completions.map(completion => {
                 this.outputChannel.appendLine(`补全建议: ${completion.text}`);
+                this.lastCompletionText = completion.text;
                 return {
                     insertText: completion.text,
                     range: new vscode.Range(position, position)
@@ -66,11 +110,12 @@ export class AICompletionProvider implements vscode.InlineCompletionItemProvider
             });
 
             this.outputChannel.appendLine(`创建补全列表: ${JSON.stringify(list, null, 2)}`);
+            this.lastCompetionList = list; // 存储最后一次的补全列表
             return list;
         } catch (error) {
             this.outputChannel.appendLine(`补全错误: ${error}`);
             console.error('AI 补全失败:', error);
-            return [];
+            return undefined;
         }
     }
 
@@ -79,6 +124,13 @@ export class AICompletionProvider implements vscode.InlineCompletionItemProvider
         position: vscode.Position,
         linePrefix: string,
     ): boolean {
+        // 频率限制
+        const now = Date.now();
+        if (now - this.lastTriggerTime < this.TRIGGER_DELAY) {
+            this.outputChannel.appendLine('触发太频繁，跳过');
+            return false;
+        }
+
         this.outputChannel.appendLine(`检查是否应该触发补全:`);
         this.outputChannel.appendLine(`- 文档语言: ${document.languageId}`);
         this.outputChannel.appendLine(`- 位置: ${position.line}:${position.character}`);
@@ -100,13 +152,6 @@ export class AICompletionProvider implements vscode.InlineCompletionItemProvider
         if (linePrefix.trim() !== '') {
             this.outputChannel.appendLine('当前行不为空，允许触发');
             return true;
-        }
-
-        // 其他情况保持原有的检查
-        const now = Date.now();
-        if (now - this.lastTriggerTime < this.TRIGGER_DELAY) {
-            this.outputChannel.appendLine('触发太频繁，跳过');
-            return false;
         }
 
         if (this.isInComment(document, position)) {
