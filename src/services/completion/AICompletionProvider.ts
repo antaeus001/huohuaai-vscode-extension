@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { getCompletion } from '../../api';
 import { ProviderResult } from 'vscode';
+import { ClineProvider } from '../../core/webview/ClineProvider';
 
 export class AICompletionProvider implements vscode.InlineCompletionItemProvider {
     private outputChannel: vscode.OutputChannel;
@@ -19,7 +20,7 @@ export class AICompletionProvider implements vscode.InlineCompletionItemProvider
         position: vscode.Position,
         context: vscode.InlineCompletionContext,
         token: vscode.CancellationToken
-    ): Promise<vscode.InlineCompletionItem[] | vscode.InlineCompletionList | undefined> {
+    ): Promise<vscode.InlineCompletionItem[] | vscode.InlineCompletionList | undefined> {        
         if (token.isCancellationRequested) {
             return undefined;
         }
@@ -77,11 +78,21 @@ export class AICompletionProvider implements vscode.InlineCompletionItemProvider
 
             this.outputChannel.appendLine('正在请求 AI 补全...');
             
+            const provider = ClineProvider.getVisibleInstance();
+            if (!provider) {
+                this.outputChannel.appendLine('无法获取当前配置');
+                return undefined;
+            }
+
+            const { apiConfiguration } = await provider.getState();
+            this.outputChannel.appendLine(`使用模型: ${apiConfiguration.apiProvider}/${apiConfiguration.apiModelId}`);
+            
             const completions = await getCompletion({
                 prompt: contextText,
                 maxTokens: 50,
                 temperature: 0.2,
-                cursorPosition: position.character
+                cursorPosition: position.character,
+                configuration: apiConfiguration  // 直接传入完整的配置
             });
 
             if (!completions || completions.length === 0) {

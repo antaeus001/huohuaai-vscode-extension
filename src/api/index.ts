@@ -22,6 +22,7 @@ export interface CompletionOptions {
     maxTokens: number;
     temperature: number;
     cursorPosition: number;
+    configuration?: ApiConfiguration;
 }
 
 export interface CompletionResult {
@@ -125,10 +126,19 @@ function hypothenuse(a, b) {
         `\n\n<QUERY>\n${prefix}{{FILL_HERE}}${suffix}\n</QUERY>\nTASK: Fill the {{FILL_HERE}} hole. Answer only with the CORRECT completion, and NOTHING ELSE. Do it now.\n<COMPLETION>`;
 
     const configuration: ApiConfiguration = {
-        apiProvider: "anthropic",
-        apiModelId: "claude-3-5-sonnet-20240620",
-        apiKey: "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",
+        ...options.configuration,
+        apiProvider: options.configuration?.apiProvider || 'anthropic',
+        apiModelId: options.configuration?.apiModelId,
+        apiKey: options.configuration?.apiKey,
     };
+
+    if (configuration.apiProvider === 'deepseek') {
+        configuration.apiKey = options.configuration?.deepSeekApiKey;
+    } else if (configuration.apiProvider === 'anthropic') {
+        configuration.apiKey = options.configuration?.apiKey;
+    }
+
+    console.log('使用配置:', configuration);
 
     const handler = buildApiHandler(configuration);
 
