@@ -2,7 +2,7 @@
 	"name": "huohuaai",
 	"displayName": "HuoHuaAI (huohuaai.com)",
 	"description": "您的AI编程助手，全中文回复，可以帮助您编写代码、调试程序、创建项目等",
-	"version": "4.0.4",
+	"version": "4.0.5",
 	"icon": "assets/icons/icon.png",
 	"galleryBanner": {
 		"color": "#617A91",
@@ -42,11 +42,14 @@
 		"chatgpt",
 		"sonnet",
 		"ai",
-		"llama"
+		"llama",
+		"completion",
+		"code-completion",
+		"assistant"
 	],
 	"activationEvents": [
-		"onLanguage:*",
-		"onStartupFinished"
+		"onStartupFinished",
+		"onLanguage"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
@@ -97,7 +100,7 @@
 			{
 				"command": "huohuaai.openInNewTab",
 				"title": "Open In New Tab",
-				"category": "Cline"
+				"category": "HuoHuaAI"
 			}
 		],
 		"menus": {
